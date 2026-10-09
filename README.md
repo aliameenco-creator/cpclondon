@@ -12,6 +12,13 @@ Custom theme for https://www.cpclondon.com/, rebuilt from the approved HTML rede
 
 The homepage is the imported page with slug `home`. The site root always renders it; `/home/` redirects to `/`. An admin notice offers a one-click Settings → Reading change so WordPress and SEO metadata treat it as the homepage.
 
+## Where content lives
+
+- Designed layouts (homepage, service pages, header, footer) are theme files generated from the archived CPC website, so they update with theme releases. Their copy is the original CPC copy.
+- To edit a designed page's text in WordPress instead, choose the page template **Editor content (no theme layout)** for that page.
+- Blog articles, legal pages and celluloid cinemas are rendered from WordPress content.
+- Contact form enquiries: wp-admin → **Enquiries**. Recipient: Settings → General → "CPC contact form recipient" (default office@cpclondon.com). Hosting email delivery should be checked once with a real test enquiry; an SMTP plugin is recommended if mails do not arrive.
+
 ## Building
 
 Generated files (`parts/*.html`, `assets/style.css`, `assets/app.js`, logo, favicon, journal fallback image) come from the redesign source in the migration workspace (`tools/build_cpc_theme.py`). `python scripts/package.py` builds `dist/cpc-london.zip` from the committed files.

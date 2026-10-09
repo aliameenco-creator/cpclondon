@@ -1,0 +1,50 @@
+{
+ "title": "CONTACT US",
+ "submit": "Submit",
+ "thanks": "Thanks for your submission! A team member will be in touch as soon as possible.",
+ "fields": [
+  {
+   "key": "name",
+   "label": "Name",
+   "type": "text",
+   "required": true,
+   "max": 500
+  },
+  {
+   "key": "email",
+   "label": "Email",
+   "type": "email",
+   "required": true,
+   "max": 100
+  },
+  {
+   "key": "project_title",
+   "label": "Project Title",
+   "type": "text",
+   "required": false,
+   "max": 500
+  },
+  {
+   "key": "runtime",
+   "label": "Runtime",
+   "type": "text",
+   "required": false,
+   "max": 500
+  },
+  {
+   "key": "delivery_address",
+   "label": "Delivery Address",
+   "type": "text",
+   "required": false,
+   "max": 500
+  },
+  {
+   "key": "message",
+   "label": "Message",
+   "type": "textarea",
+   "required": true,
+   "max": 1000
+  }
+ ],
+ "source": "Strikingly CustomForm on https://www.cpclondon.com/ (archived)"
+}
