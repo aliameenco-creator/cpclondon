@@ -13,6 +13,9 @@
   const toggle = d.querySelector('.menu-toggle');
   const closeMenu = () => { d.body.classList.remove('menu-open'); toggle && toggle.setAttribute('aria-expanded', 'false'); };
   toggle && toggle.addEventListener('click', () => {
+    // The panel starts right under the header wherever it currently is (admin bar or not).
+    const nav = d.getElementById('navigation');
+    if (nav && header) nav.style.top = Math.max(0, header.getBoundingClientRect().bottom) + 'px';
     const open = d.body.classList.toggle('menu-open');
     toggle.setAttribute('aria-expanded', String(open));
   });
@@ -50,6 +53,38 @@
   }
 
   window.addEventListener('beforeprint', () => items.forEach((el) => el.classList.add('in')));
+
+  // Phones: testimonial carousel with dots and gentle auto-advance (pauses once touched).
+  const carousel = d.querySelector('.testimonials-home .marquee');
+  if (carousel) {
+    const phone = window.matchMedia('(max-width: 640px)');
+    const cards = [...carousel.querySelectorAll('.t-card:not([aria-hidden="true"])')];
+    const dots = d.createElement('div');
+    dots.className = 't-dots';
+    cards.forEach((card, i) => {
+      const dot = d.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+      dot.addEventListener('click', () => { stop(); go(i); });
+      dots.appendChild(dot);
+    });
+    carousel.after(dots);
+    let index = 0;
+    let timer = null;
+    const go = (i) => { index = (i + cards.length) % cards.length; carousel.scrollTo({ left: cards[index].offsetLeft - (carousel.clientWidth - cards[index].offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' }); };
+    const mark = () => {
+      const centre = carousel.scrollLeft + carousel.clientWidth / 2;
+      index = cards.reduce((best, card, i) => Math.abs(card.offsetLeft + card.offsetWidth / 2 - centre) < Math.abs(cards[best].offsetLeft + cards[best].offsetWidth / 2 - centre) ? i : best, 0);
+      [...dots.children].forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+    };
+    const stop = () => { clearInterval(timer); timer = null; };
+    const start = () => { stop(); if (phone.matches && !reduce) timer = setInterval(() => go(index + 1), 5500); };
+    carousel.addEventListener('scroll', () => window.requestAnimationFrame(mark), { passive: true });
+    carousel.addEventListener('touchstart', stop, { passive: true });
+    phone.addEventListener('change', start);
+    mark();
+    start();
+  }
 
   // Click-to-play video previews.
   d.querySelectorAll('.video-facade').forEach((btn) => btn.addEventListener('click', () => {

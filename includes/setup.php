@@ -23,8 +23,6 @@ add_action( 'template_redirect', function () {
 function cpc_setup_missing() {
     $missing = array();
     if ( 'page' !== get_option( 'show_on_front' ) && get_page_by_path( 'home' ) ) { $missing[] = 'homepage'; }
-    $contact = get_page_by_path( 'contact' );
-    if ( ! $contact || 'publish' !== $contact->post_status ) { $missing[] = 'contact'; }
     return $missing;
 }
 
@@ -32,7 +30,7 @@ add_action( 'admin_notices', function () {
     if ( ! current_user_can( 'manage_options' ) ) { return; }
     $missing = cpc_setup_missing();
     if ( ! $missing ) { return; }
-    $labels = array( 'homepage' => 'set the imported "CPC London" page as the site homepage', 'contact' => 'publish the Contact page (/contact) with the enquiry form' );
+    $labels = array( 'homepage' => 'set the imported "CPC London" page as the site homepage' );
     $url = wp_nonce_url( admin_url( 'admin-post.php?action=cpc_setup' ), 'cpc_setup' );
     echo '<div class="notice notice-warning"><p><strong>CPC London setup:</strong> ' . esc_html( implode( '; ', array_intersect_key( $labels, array_flip( $missing ) ) ) ) . '.</p><p><a class="button button-primary" href="' . esc_url( $url ) . '">Complete CPC London setup</a></p></div>';
 } );
@@ -55,3 +53,20 @@ add_action( 'admin_post_cpc_setup', function () {
     wp_safe_redirect( home_url( '/contact' ) );
     exit;
 } );
+
+/** /contact works before a Contact page exists: serve the contact template instead of a 404. */
+function cpc_is_virtual_contact() {
+    global $wp;
+    return is_404() && isset( $wp->request ) && 'contact' === trim( (string) $wp->request, '/' );
+}
+add_filter( 'template_include', function ( $template ) {
+    if ( ! cpc_is_virtual_contact() ) { return $template; }
+    global $wp_query;
+    $wp_query->is_404 = false;
+    status_header( 200 );
+    return get_theme_file_path( 'page-contact.php' );
+} );
+add_filter( 'pre_get_document_title', function ( $title ) {
+    global $wp;
+    return ( is_404() || ! have_posts() ) && isset( $wp->request ) && 'contact' === trim( (string) $wp->request, '/' ) ? 'Contact Us – ' . get_bloginfo( 'name' ) : $title;
+}, 20 );

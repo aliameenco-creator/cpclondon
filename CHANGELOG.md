@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+- /contact shows the contact form straight away, without needing a Contact page or the setup button.
+- Phones: header no longer floats below the top when logged in; menu panel opens directly under the header.
+- Phones: two-column layout where content is short (service tiles, workflow steps, step/option cards, blog cards, client logos, gallery, footer links); long-text sections stay one column. Category filters scroll sideways.
+- Phones: testimonials become a swipeable one-card carousel with dots and gentle auto-advance.
+
 ## 0.3.0
 - Homepage redesign from the original site's own content: animated hero headline, the eight original service photo tiles, 35mm workflow, moving testimonials (all 10 archived quotes), moving client-logo strip, the original CPC YouTube video with all five social profiles, latest blog articles.
 - Subtle motion throughout: line-by-line hero text, fade-up reveals on scroll, hover lifts; all disabled for visitors who prefer reduced motion.

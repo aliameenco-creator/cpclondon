@@ -315,15 +315,16 @@ body.menu-open .bars:after{top:0;transform:rotate(-45deg)}
   .cols-3{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:782px){body.admin-bar .site-header{top:46px}body.admin-bar .nav{top:134px}}
+@media(max-width:782px){body.admin-bar .site-header{top:46px}}
+/* Phones: WordPress's admin bar scrolls away with the page, so the sticky header must sit at the very top. */
+@media(max-width:600px){body.admin-bar .site-header{top:0}}
 @media(max-width:640px){
   .section{padding:68px 0}
   .header-inner{height:76px}
   .brand-logo{height:46px}
   .nav{top:76px}
   .hero{min-height:620px}
-  .service-tiles,.post-grid,.cols-4,.cols-3,.cols-2,.form-grid,.steps{grid-template-columns:1fr}
-  .service-tile{aspect-ratio:16/11}
+  .cols-4,.cols-3,.cols-2,.form-grid{grid-template-columns:1fr}
   .inner-hero.has-image{padding:80px 0 88px}
   .feature-quote{grid-template-columns:1fr;padding:34px;gap:22px}
   .contact-form-card{padding:28px 22px}
@@ -335,6 +336,52 @@ body.menu-open .bars:after{top:0;transform:rotate(-45deg)}
   .footer-grid{grid-template-columns:1fr}
   .quote-band{padding:90px 0}
 }
+/* ---------- phones: two columns where content is short ---------- */
+@media(max-width:640px){
+  .wrap{padding-left:18px;padding-right:18px}
+  .service-tiles{grid-template-columns:1fr 1fr;gap:8px}
+  .service-tile{aspect-ratio:3/4}
+  .tile-body{padding:14px 13px 15px}
+  .tile-title{font-size:12.5px;letter-spacing:.03em}
+  .tile-text{margin-top:5px;font-size:11.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .tile-arrow{top:10px;right:10px;width:28px;height:28px;font-size:12px}
+  .steps{grid-template-columns:1fr 1fr;gap:26px 18px;margin-top:34px}
+  .step h3{font-size:18px;margin:16px 0 8px}
+  .card-grid.compact{grid-template-columns:1fr 1fr;gap:10px}
+  .card-grid.compact .info-card{padding:20px 15px}
+  .card-grid.compact .info-card h3{font-size:15.5px}
+  .card-grid.compact .info-card p{font-size:13px;line-height:1.55}
+  .card-grid.compact .card-icon{width:40px;height:40px;margin-bottom:12px}
+  .card-grid.compact .step-num{margin-bottom:10px}
+  .post-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .post-card .card-body{padding:13px 13px 15px;gap:7px}
+  .post-card h3{font-size:14.5px;line-height:1.35}
+  .post-card p,.post-card .text-link,.post-card .card-meta span{display:none}
+  .post-card .card-meta{font-size:10px}
+  .home-journal .post-card:nth-child(3),.related .post-card:nth-child(3){display:none}
+  .logo-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .logo-grid .logo-tile{height:74px;padding:10px}
+  .logos .logo-tile{width:130px;height:78px}
+  .gallery-grid{columns:2;column-gap:8px}
+  .gallery-item{margin-bottom:8px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -18px 30px;padding:0 18px 6px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:34px 20px}
+  .footer-brand,.footer-contact{grid-column:1/-1}
+  /* Testimonials: swipeable one-card carousel instead of the desktop marquee. */
+  .testimonials-home .marquee{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-mask-image:none;mask-image:none;scrollbar-width:none;padding:0 18px 4px}
+  .testimonials-home .marquee::-webkit-scrollbar{display:none}
+  .testimonials-home .marquee-track{animation:none;align-items:flex-start;gap:12px}
+  .testimonials-home .marquee-track>*{margin-right:0}
+  .testimonials-home .marquee-track>[aria-hidden="true"]{display:none}
+  .t-card{width:calc(100vw - 54px);scroll-snap-align:center;padding:26px 22px 22px;gap:18px}
+  .t-card blockquote{font-size:16px}
+  .t-dots{display:flex;justify-content:center;gap:7px;margin-top:20px}
+  .t-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:#d6c3cd;cursor:pointer;transition:width .3s,background .3s}
+  .t-dots button[aria-current="true"]{width:22px;border-radius:5px;background:var(--brand)}
+}
+@media(min-width:641px){.t-dots{display:none}}
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .hero-title .line>span{transform:none}
