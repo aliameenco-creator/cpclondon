@@ -15,11 +15,11 @@ while ( have_posts() ) :
     <?php
     $cpc_prev = get_previous_post();
     $cpc_next = get_next_post();
-    if ( $cpc_prev ) { echo '<a class="post-nav-link prev" href="' . esc_url( get_permalink( $cpc_prev ) ) . '"><span>← Previous</span>' . esc_html( get_the_title( $cpc_prev ) ) . '</a>'; }
-    if ( $cpc_next ) { echo '<a class="post-nav-link next" href="' . esc_url( get_permalink( $cpc_next ) ) . '"><span>Next →</span>' . esc_html( get_the_title( $cpc_next ) ) . '</a>'; }
+    if ( $cpc_prev ) { echo '<a class="post-nav-link prev" href="' . esc_url( get_permalink( $cpc_prev ) ) . '"><span>Previous</span>' . esc_html( get_the_title( $cpc_prev ) ) . '</a>'; }
+    if ( $cpc_next ) { echo '<a class="post-nav-link next" href="' . esc_url( get_permalink( $cpc_next ) ) . '"><span>Next</span>' . esc_html( get_the_title( $cpc_next ) ) . '</a>'; }
     ?>
 </nav>
-<section class="section related"><div class="wrap"><div class="section-head" data-reveal><div><h2>More from the blog</h2></div><a class="text-link" href="<?php echo esc_url( $cpc_blog ? get_permalink( $cpc_blog ) : home_url( '/blog' ) ); ?>">ALL ARTICLES ↗</a></div>
+<section class="section related"><div class="wrap"><div class="section-head" data-reveal><div><h2>More from the blog</h2></div><a class="text-link" href="<?php echo esc_url( $cpc_blog ? get_permalink( $cpc_blog ) : home_url( '/blog' ) ); ?>">ALL ARTICLES</a></div>
 <div class="post-grid"><?php echo implode( '', array_map( 'cpc_card_html', cpc_related_posts() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div></div></section>
     <?php
 endwhile;

@@ -151,6 +151,6 @@ function cpc_contact_form() {
         else { echo '<input type="' . esc_attr( $field['type'] ) . '" value="' . esc_attr( $value ) . '"' . $attrs . '>'; } // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo '<span class="field-error">' . esc_html( $error ) . '</span></div>';
     }
-    echo '</div><div class="form-actions"><button class="button" type="submit">' . esc_html( strtoupper( $form['submit'] ) ) . ' ↗</button><span class="form-note">* required</span></div>';
+    echo '</div><div class="form-actions"><button class="button" type="submit">' . esc_html( strtoupper( $form['submit'] ) ) . '</button><span class="form-note">* required</span></div>';
     echo '<noscript><p class="form-error">Please enable JavaScript to send this form, or email <a href="mailto:office@cpclondon.com">office@cpclondon.com</a>.</p></noscript></form>';
 }

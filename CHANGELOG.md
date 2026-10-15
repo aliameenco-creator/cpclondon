@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0
+- New fonts taken from the logo: Questrial for headings and menus (the round "cpc" letters), Arimo for text (the "35 mm. Film Printing Company" line), and a handwritten script, like "London", for a few small labels. Fonts are included in the theme; nothing loads from Google.
+- Simpler header: Services (dropdown with all services), Clients, Blog and a Contact us button. FAQ's, Celluloid Cinemas, Terms & Conditions and GDPR moved to the footer. New drawn dropdown arrow.
+- Buttons, cards, tiles, images, form fields and the dropdown now have softly rounded corners.
+- Homepage: client logos straight under the hero, in their original colours; new FAQ's section with the first six questions from the FAQ's page.
+- Client logos show in colour everywhere (Clients page, homepage).
+- Page headers: lighter photo overlay with a film-strip edge taken from the logo's sprocket holes.
+- Blog: large featured article, cleaner cards with category labels, softer category filters.
+- Articles: the old blog's tag line at the top of some posts (a "·" followed by category names) is no longer shown; categories already appear in the article header.
+- Cleaner footer: logo, socials, Services / Resources / Contact columns, current-year copyright, legal links. The contact band above it is now a rounded card ("Let’s" apostrophe fixed).
+- Phones: two-column footer links, equal-width hero buttons, compact client logo strip and FAQ cards, full-width buttons where useful. Checked at 390, 360 and 320 px.
+
 ## 0.3.1
 - /contact shows the contact form straight away, without needing a Contact page or the setup button.
 - Phones: header no longer floats below the top when logged in; menu panel opens directly under the header.

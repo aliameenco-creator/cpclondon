@@ -1,0 +1,9 @@
+Fonts bundled with the CPC London theme (latin subsets, WOFF2, from Google Fonts).
+All are free to use, embed and redistribute under the licences below.
+
+Questrial            Copyright (c) 2011, Joe Prince, Admix Designs. SIL Open Font License 1.1
+                     https://openfontlicense.org
+Arimo                Copyright 2020 The Arimo Project Authors. Apache License 2.0
+                     https://www.apache.org/licenses/LICENSE-2.0
+Mrs Saint Delafield  Copyright (c) 2011, Alejandro Paul (Sudtipos). SIL Open Font License 1.1
+                     https://openfontlicense.org

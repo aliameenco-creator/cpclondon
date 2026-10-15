@@ -13,7 +13,7 @@ add_action( 'after_setup_theme', function () {
     add_theme_support( 'custom-logo', array( 'width' => 2225, 'height' => 770, 'flex-width' => true, 'flex-height' => true ) );
     add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
     add_theme_support( 'editor-styles' );
-    add_editor_style( array( 'assets/style.css', 'assets/cpc.css' ) );
+    add_editor_style( array( 'assets/style.css', 'assets/cpc.css', 'assets/refresh.css' ) );
     register_nav_menus( array( 'primary' => 'Primary navigation', 'footer' => 'Footer navigation' ) );
 } );
 
@@ -22,12 +22,17 @@ add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style( 'cpc-design', get_theme_file_uri( 'assets/style.css' ), array(), $version );
     wp_enqueue_style( 'cpc-wordpress', get_theme_file_uri( 'assets/wordpress.css' ), array( 'cpc-design' ), $version );
     wp_enqueue_style( 'cpc-theme', get_theme_file_uri( 'assets/cpc.css' ), array( 'cpc-wordpress' ), $version );
+    wp_enqueue_style( 'cpc-refresh', get_theme_file_uri( 'assets/refresh.css' ), array( 'cpc-theme' ), $version );
     wp_enqueue_script( 'cpc-theme', get_theme_file_uri( 'assets/cpc.js' ), array(), $version, array( 'strategy' => 'defer', 'in_footer' => true ) );
 } );
 
 /** Mark the document before first paint so scroll animations never hide content when JavaScript is off. */
 add_action( 'wp_head', function () {
     echo "<script>document.documentElement.classList.add('js')</script>\n";
+    // Bundled brand fonts (headings + body) are requested before the stylesheet discovers them.
+    foreach ( array( 'questrial-normal', 'arimo-normal' ) as $cpc_font ) {
+        echo '<link rel="preload" href="' . esc_url( get_theme_file_uri( 'assets/fonts/' . $cpc_font . '.woff2' ) ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+    }
     if ( ! has_site_icon() ) {
         echo '<link rel="icon" type="image/png" sizes="16x16" href="' . esc_url( get_theme_file_uri( 'assets/cpc-london-favicon.png' ) ) . '">' . "\n";
     }

@@ -26,6 +26,8 @@ function cpc_theme_part( $name ) {
     $file = cpc_part_file( $name );
     if ( ! $file ) { return; }
     $html = cpc_theme_fragment( file_get_contents( $file ) );
+    // Copyright year is always the current year, never a value copied from the old site.
+    $html = str_replace( '<!--cpc:year-->', esc_html( wp_date( 'Y' ) ), $html );
     if ( str_contains( $html, '<!--cpc:latest-posts-->' ) ) {
         $html = str_replace( '<!--cpc:latest-posts-->', cpc_latest_posts_html( 3 ), $html );
     }
