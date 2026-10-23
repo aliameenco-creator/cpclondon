@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+- Fixes every blog article, blog category page and /pages/cookie-policy showing "Page not found". The original addresses (/blog/<article>, /blog/categories/<category>) are now recognised directly by the theme on every visit, so they keep working even when WordPress rebuilds its link settings after an update.
+- /blog/<article>/ (with a trailing slash) redirects to the original address without it, so each article has one address. Old /post/<article> links keep redirecting to the article.
+
 ## 0.4.0
 - New fonts taken from the logo: Questrial for headings and menus (the round "cpc" letters), Arimo for text (the "35 mm. Film Printing Company" line), and a handwritten script, like "London", for a few small labels. Fonts are included in the theme; nothing loads from Google.
 - Simpler header: Services (dropdown with all services), Clients, Blog and a Contact us button. FAQ's, Celluloid Cinemas, Terms & Conditions and GDPR moved to the footer. New drawn dropdown arrow.

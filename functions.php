@@ -5,6 +5,7 @@ require_once __DIR__ . '/includes/github-updater.php';
 require_once __DIR__ . '/includes/layout.php';
 require_once __DIR__ . '/includes/setup.php';
 require_once __DIR__ . '/includes/blog.php';
+require_once __DIR__ . '/includes/routes.php';
 require_once __DIR__ . '/includes/contact-form.php';
 
 add_action( 'after_setup_theme', function () {
